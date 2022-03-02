@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document!!!!</title>
+    <!-- script for using vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HEH</h1>
+    <div id="app">
+      <!-- v-if is used for conditional rendering -->
+      <div v-if="showBooks"><h2>{{title}} - {{author}} - {{age}}</h2></div>
+      <!-- this "v-on" is known as a directive. they can do a lot of things. v-on
+      lets us react to different events -->
+      <button v-on:click="age++">Increase age</button>
+      <button v-on:click="age--">Decrease age</button>
+      <!-- @ is a shortcut for v-on: -->
+      <!-- we are now using the methods config in app.js to run functions and we attach it like below -->
+      <!-- we can also pass in arguments -->
+      <div @click="changeTitle('Oathbringer')">
+        We can attach directives to almost anything. Click this.
+      </div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide books</span>
+        <span v-else>Show books</span>
+      </button>
+      <br />
+      <!-- mouse events -->
+      <!-- we can explicitly pass in event as an argument if we wanna pass in custom
+      arguments too -->
+      <div @mouseover="handleEvent($event, 'CustomArgument')" class="box">
+        mouseover (enter)
+      </div>
+      <div @mouseleave="handleEvent" class="box">mouseleave</div>
+      <div @dblclick="handleEvent" class="box">double click</div>
+      <div @mousemove="handleMousemove" class="box">
+        Position - X: {{ x}} Y: {{ y }}
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
